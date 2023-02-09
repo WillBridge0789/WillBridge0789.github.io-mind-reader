@@ -11,13 +11,55 @@
 <body>
     <div class="container">
         <div class="row">
-            <h1>I can read your mind</h1>
+            <div class="col my-auto">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <h1>I can read your mind</h1>
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <h1>Pick a number from 01-99</h1>
+                        <p>When you have your number, click the 'play' button.</p>
+                      </div>
+                      <div class="carousel-item">
+                        <h1>Add both digits together to get a new number</h1>
+                        <h5>Ex: 14 is 1+4=5</h5>
+                        <p>Click next to proceed</p>
+                      </div>
+                      <div class="carousel-item">
+                        <h1>Subtract your new number from the original number</h1>
+                        <h5>Ex: 14 is 14-5=9</h5>
+                        <p>Click next to proceed</p>
+                      </div>
+                      <div class="carousel-item">
+                        <h1>0 - !<br>
+                            1 - @<br>
+                            2 - #<br>
+                            3 - $<br>
+                            ...
+                        </h1>
+                        <h5>Find your new number</h5>
+                        <p>Note the symbol beside the number</p>
+                      </div>
+                      <div class="carousel-item">
+                        <h1>*Symbol goes here*</h1>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <button type="button" class="btn">
+                        <img src="img/arrow-counterclockwise.svg">
+                      </button>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <img src="img/play.svg">
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <button type="button" class="btn">
-            <img src="img/play.svg" alt="press play">
-        </button>    
     </div>
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
