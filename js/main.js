@@ -78,11 +78,13 @@ function init() {
     currentPage = 0;
     let firstPage = state.pages[state.currentPage];
     headerElement.innerText = firstPage.headerElement;
-    console.log(currentPage);
-    //let secondPage = state.pages[currentPage];
-    headerElement2.innerText = state.pages[currentPage].headerElement2;
+   console.log(state);
+   //let secondPage = state.pages[currentPage];
+   headerElement2.innerText = state.pages[1]?.headerElement2;
+   console.log(state);
 }
-carouselExample.addEventListener('slide.bs.carousel', event => {
+carouselExample.addEventListener('slid.bs.carousel', event => {
     currentPage++;
+    console.log(currentPage);
 })
 //init();
