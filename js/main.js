@@ -1,6 +1,6 @@
 //Variables:
-//let resetButton = document.getElementById("resetButton");
-//let nextButton = document.getElementById("nextButton");
+/* Due to me using a bootstrap "carousel", 
+I had to make a variable for each <p> and <h1> element */
 let headerElement = document.getElementById('headerElement');
 let headerElement2 = document.getElementById('headerElement2');
 let headerElement3 = document.getElementById('headerElement3');
@@ -16,7 +16,10 @@ let paragraphTxt6 = document.getElementById('pargraphTxt2');
 let paragraphTxt7 = document.getElementById('pargraphTxt2');
 let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
 //Objects:
+/* Starting with the "state" object which has the key: "currentPage" at value 0, 
+and also the key: "pages" with an array value */
 let state = {
+    //
     currentPage: 0,
     pages:  [
         {
@@ -47,7 +50,7 @@ let state = {
             nextButtonText: "REVEAL"
         },
         {
-            headerElement6: create99Symbols(),
+            headerElement6: "",
             paragraphText: "",
             nextButtonText: ""
         },
@@ -56,16 +59,12 @@ let state = {
 
 
 //Functions:
-
-document.addEventListener("click", function reset() {
-    return state.pages[0];
-})
-
+/* the function "create99symbols()" is SUPPOSE to iterate through our key:value pair of "pages"
+and give us a symbol with every multiple of 9 */
 function create99Symbols() {
     let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
     let arr = [];
     for (let i = 0; i < 100; i++) {
         arr.push(i + " " + symbols[i % 9]);        
     }
-    return symbols;
 }
