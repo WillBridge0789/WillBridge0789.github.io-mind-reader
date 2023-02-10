@@ -40,4 +40,4 @@
     		--> **arr**.push(i + " " + **symbols**[i % 9]);<br>
 }
 
-### Procedures
+
