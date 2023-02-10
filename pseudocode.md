@@ -40,16 +40,4 @@
     		--> **arr**.push(i + " " + **symbols**[i % 9]);<br>
 }
 
-### Procedures
-1. On page 1: 
-    * Have user click to get started
-2. On page 2:
-    * GET a user to THINK of a NUMBER between 01-99. Once they have a number though up, have the user **CLICK** *NEXT* button to move to next page.
-3. On page 3:
-    * Have the user **ADD** the 2 digits in their number together to get a new number.Once the user has the *SUM* of the digits, have them click *NEXT* to go to the next page.
-4. On page 4:
-    * Have the user **SUBTRACT** their new number from their original number. After getting the difference from those numbers, have the user click *NEXT* to go to the next page.
-5. On page 5:
-    * Have the user find their new number through the symbols corresponding with the number. (i.e. **0-!, 1-@, 2-#**, etc.). If the user has found their number corresponding to their symbol, have user click *REVEAL* to move to the next page to show the symbol that the user may have chosen.
-6. On page 6:
-    * Reveal symbol that corresponds to the number they have chosen. **IF** they want to play again, the user can then click the "circle arrow" button to *RESET* the game.
+
