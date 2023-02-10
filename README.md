@@ -1,6 +1,2 @@
-# WillBridge0789.github.io-mind-reader
-## Feb 8, 23 *5:33pm*
-### Things I have accomplished so far:
-1. Typed pseudocode
-2. Did basic outline in index.html with a header and a button (of sorts).
-3. Used pseudocode to type of my variables, objects and functions in my main.js file.
+# Mind-Reader
+A project where its suppose to predict the number you chose with a corresponding symbol using a math gimmick. Could not succeed in plugging in the javaScript to the HTML to get the functionality to work. 

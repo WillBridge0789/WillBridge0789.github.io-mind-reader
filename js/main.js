@@ -60,7 +60,7 @@ let state = {
 
 //Functions:
 /* the function "create99symbols()" is SUPPOSE to iterate through our key:value pair of "pages"
-and give us a symbol with every multiple of 9 */
+and give us a symbol with every multiple of 9 on page 6 */
 function create99Symbols() {
     let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
     let arr = [];
