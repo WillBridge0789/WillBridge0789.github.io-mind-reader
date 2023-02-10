@@ -15,6 +15,7 @@ let paragraphTxt5 = document.getElementById('pargraphTxt2');
 let paragraphTxt6 = document.getElementById('pargraphTxt2');
 let paragraphTxt7 = document.getElementById('pargraphTxt2');
 let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
+let currentPage = 0;
 //Objects:
 /* Starting with the "state" object which has the key: "currentPage" at value 0, 
 and also the key: "pages" with an array value */
@@ -62,9 +63,26 @@ let state = {
 /* the function "create99symbols()" is SUPPOSE to iterate through our key:value pair of "pages"
 and give us a symbol with every multiple of 9 on page 6 */
 function create99Symbols() {
-    let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
     let arr = [];
     for (let i = 0; i < 100; i++) {
         arr.push(i + " " + symbols[i % 9]);        
     }
 }
+create99Symbols(state.pages[headerElement6]);
+
+function stateChange() {
+
+}
+
+function init() {
+    currentPage = 0;
+    let firstPage = state.pages[state.currentPage];
+    headerElement.innerText = firstPage.headerElement;
+    console.log(currentPage);
+    //let secondPage = state.pages[currentPage];
+    headerElement2.innerText = state.pages[currentPage].headerElement2;
+}
+carouselExample.addEventListener('slide.bs.carousel', event => {
+    currentPage++;
+})
+//init();
