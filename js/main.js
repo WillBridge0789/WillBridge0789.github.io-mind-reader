@@ -1,59 +1,55 @@
 //Variables:
-/* Due to me using a bootstrap "carousel", 
-I had to make a variable for each <p> and <h1> element */
-let headerElement = document.getElementById('headerElement');
-let headerElement2 = document.getElementById('headerElement2');
-let headerElement3 = document.getElementById('headerElement3');
-let headerElement4 = document.getElementById('headerElement4');
-let headerElement5 = document.getElementById('headerElement5');
-let headerElement6 = document.getElementById('headerElement6');
-let paragraphTxt1 = document.getElementById('paragraphTxt1');
-let paragraphTxt2 = document.getElementById('pargraphTxt2');
-let paragraphTxt3 = document.getElementById('pargraphTxt2');
-let paragraphTxt4 = document.getElementById('pargraphTxt2');
-let paragraphTxt5 = document.getElementById('pargraphTxt2');
-let paragraphTxt6 = document.getElementById('pargraphTxt2');
-let paragraphTxt7 = document.getElementById('pargraphTxt2');
+let headerText = document.getElementById('headerText');
+let midButton = document.getElementById('midButton');
+let paragraph1 = document.getElementById('paragraph1');
+let paragraph2 = document.getElementById('paragraph2');
+let bttmButton = document.getElementById('bttmButton');
 let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
-let currentPage = 0;
-//Objects:
-/* Starting with the "state" object which has the key: "currentPage" at value 0, 
-and also the key: "pages" with an array value */
+
 let state = {
-    //
     currentPage: 0,
     pages:  [
         {
-            headerElement: "I can read your mind",
-            nextButton: "GO"
+            headerText: "I can read your mind",
+            midButton: "",
+            paragraph1: "",
+            paragraph2: "",
+            bttmButton: "GO"
         },
         {
-            headerElement2: "Pick a number between 01-99",
-            paragraphTxt1: "When you have your number, click next",
-            nextButtonText: "NEXT"
+            headerText: "Pick a number between 01-99",
+            midButton: "NEXT",
+            paragraph1: "When you have your number, click next",
+            paragraph2: "",
+            bttmButton: ""
         },
         {
-            headerElement3: "Add both digits together to get a new number",
-            paragraphTxt2: "Ex: 14 is 1 + 4 = 5",
-            paragraphTxt3: " click next to proceed",
-            nextButtonText: "NEXT"
+            headerText: "Add both digits together to get a new number",
+            midButton: "NEXT",
+            paragraph1: "Ex: 14 is 1 + 4 = 5",
+            paragraph2: "click next to proceed",
+            bttmButton: ""
         },
         {
-            headerElement4: "Subtract your new number from your original number",
-            paragraphTxt4: "Ex: 14 - 5 = 9",
-            parapraghTxt5: " click next to proceed",
-            nextButtonText: "NEXT"
+            headerText: "Subtract your new number from your original number",
+            midButton: "NEXT",
+            paragraph1: "Ex: 14 - 5 = 9",
+            parapragh2: " click next to proceed",
+            bttmButton: ""
         },
         {
-            headerElement5: "0-!, 1-@, 2-#, 3-$ ...",
-            paragraphTxt6: "Find your new number.", 
-            paragraphTxt7: "Note the symbol thats by the number.",
-            nextButtonText: "REVEAL"
+            headerText: "0-!, 1-@, 2-#, 3-$ ...",
+            midButton: "REVEAL",
+            paragraph1: "Find your new number.", 
+            paragraph2: "Note the symbol thats by the number.",
+            bttmButton: ""
         },
         {
-            headerElement6: "",
-            paragraphText: "",
-            nextButtonText: ""
+            headerText: "!",
+            midButton: "",
+            paragraph1: "",
+            paragraph2: "",
+            bttmButton: "RESET"
         },
     ]
 }
@@ -68,23 +64,43 @@ function create99Symbols() {
         arr.push(i + " " + symbols[i % 9]);        
     }
 }
-create99Symbols(state.pages[headerElement6]);
-
-function stateChange() {
-
-}
+create99Symbols();
 
 function init() {
     currentPage = 0;
     let firstPage = state.pages[state.currentPage];
-    headerElement.innerText = firstPage.headerElement;
-   console.log(state);
-   //let secondPage = state.pages[currentPage];
-   headerElement2.innerText = state.pages[1]?.headerElement2;
-   console.log(state);
+    headerText.innerText = firstPage.headerText;
+    console.log(state);
+    if (currentPage.midButton) {
+        midButton.style.display = "block";
+    } else {
+        midButton.style.display = "none";
+    }
+   
+    if (currentPage.paragraph1) {
+        paragraph1.style.display = "block";
+   } else {
+        paragraph1.style.display = "none";
+   }
+
+   if (currentPage.paragraph2) {
+        paragraph2.style.display = "block";
+   } else {
+        paragraph2.style.display = "none";
+   }
+
+   bttmButton.innerText = currentPage.bttmButton;
+   midButton.innerText = currentPage.midButton;
 }
-carouselExample.addEventListener('slid.bs.carousel', event => {
-    currentPage++;
-    console.log(currentPage);
-})
-//init();
+init();
+
+function next() {
+    if (state.pages < 6) {
+        state.pages++;
+    } else {
+        state.pages = 0;
+    }
+    init()
+}
+
+document.getElementById('midButton').addEventListener('click', next);
