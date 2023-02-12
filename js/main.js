@@ -4,7 +4,18 @@ let midButton = document.getElementById('midButton');
 let paragraph1 = document.getElementById('paragraph1');
 let paragraph2 = document.getElementById('paragraph2');
 let bttmButton = document.getElementById('bttmButton');
+
+//Functions:
+/* the function "create99symbols()" is SUPPOSE to iterate through our key:value pair of "pages"
+and give us a symbol with every multiple of 9 on page 6 */
 let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
+let arr = [];
+function create99Symbols() {
+    for (let i = 0; i < 100; i++) {
+        arr.push(i + " - " + symbols[i % 9]);        
+    }
+    return arr;
+}
 
 let state = {
     currentPage: 0,
@@ -21,28 +32,28 @@ let state = {
             midButton: "NEXT",
             paragraph1: "When you have your number, click next",
             paragraph2: "",
-            bttmButton: ""
+            bttmButton: "RESET"
         },
         {
             headerText: "Add both digits together to get a new number",
             midButton: "NEXT",
             paragraph1: "Ex: 14 is 1 + 4 = 5",
             paragraph2: "click next to proceed",
-            bttmButton: ""
+            bttmButton: "RESET"
         },
         {
             headerText: "Subtract your new number from your original number",
             midButton: "NEXT",
             paragraph1: "Ex: 14 - 5 = 9",
             parapragh2: " click next to proceed",
-            bttmButton: ""
+            bttmButton: "RESET"
         },
         {
-            headerText: "0-!, 1-@, 2-#, 3-$ ...",
+            headerText: create99Symbols(),
             midButton: "REVEAL",
             paragraph1: "Find your new number.", 
             paragraph2: "Note the symbol thats by the number.",
-            bttmButton: ""
+            bttmButton: "RESET"
         },
         {
             headerText: "!",
@@ -54,53 +65,57 @@ let state = {
     ]
 }
 
-
-//Functions:
-/* the function "create99symbols()" is SUPPOSE to iterate through our key:value pair of "pages"
-and give us a symbol with every multiple of 9 on page 6 */
-function create99Symbols() {
-    let arr = [];
-    for (let i = 0; i < 100; i++) {
-        arr.push(i + " " + symbols[i % 9]);        
-    }
-}
-create99Symbols();
-
 function init() {
-    currentPage = 0;
-    let firstPage = state.pages[state.currentPage];
-    headerText.innerText = firstPage.headerText;
-    console.log(state);
-    if (currentPage.midButton) {
+    let page = state.pages[state.currentPage];
+    headerText.innerText = page.headerText;
+    bttmButton.innerText = page.bttmButton;
+    midButton.innerText = page.midButton;
+
+    if (page.midButton) {
         midButton.style.display = "block";
     } else {
         midButton.style.display = "none";
-    }
-   
-    if (currentPage.paragraph1) {
+    } 
+
+    if (page.paragraph1) {
         paragraph1.style.display = "block";
    } else {
         paragraph1.style.display = "none";
    }
 
-   if (currentPage.paragraph2) {
+   if (page.paragraph2) {
         paragraph2.style.display = "block";
    } else {
         paragraph2.style.display = "none";
    }
-
-   bttmButton.innerText = currentPage.bttmButton;
-   midButton.innerText = currentPage.midButton;
+   
+   if (page.bttmButton) {
+        bttmButton.style.display = "block";
+   } else {
+        bttmButton.style.display = "none";
+   }
+   
 }
-init();
-
+//A Function to help the user to go to the next state page
 function next() {
-    if (state.pages < 6) {
-        state.pages++;
+    if (state.currentPage < 5) {
+        state.currentPage++;
     } else {
-        state.pages = 0;
+        state.currentPage = 0;
     }
-    init()
+    init();
+    console.log(state.pages);
+}
+//A Function for one of the buttons to bring to user back to the main state page
+function reset() {
+    if (state.currentPage > 0) {
+        state.currentPage = 0;
+    } else {
+        state.currentPage++;
+    }
+    init();
 }
 
 document.getElementById('midButton').addEventListener('click', next);
+document.getElementById('bttmButton').addEventListener('click', reset)
+init();
