@@ -68,6 +68,8 @@ let state = {
 function init() {
     let page = state.pages[state.currentPage];
     headerText.innerText = page.headerText;
+    paragraph1.innerText = page.paragraph1;
+    paragraph2.innerText = page.paragraph2;
     bttmButton.innerText = page.bttmButton;
     midButton.innerText = page.midButton;
 

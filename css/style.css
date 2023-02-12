@@ -1,0 +1,21 @@
+#paragraph1, #paragraph2 {
+    color: bisque;
+    font-weight: bold;
+    font-size: medium;
+}
+#bttmButton, #midButton {
+    border-style: none;
+    border-radius: 3px;
+    background-color: bisque;
+    color: rgb(143, 141, 141);
+}
+
+#midButton:hover {
+    background-color: rgb(254, 209, 153);
+    color: white;
+}
+
+#bttmButton:hover {
+    background-color: rgb(254, 209, 153);
+    color: white;
+}
