@@ -1,5 +1,12 @@
+#headerText {
+    text-align: center;
+    color: rgb(140, 139, 139);
+    margin-bottom: 115px;
+    padding: 50px;
+}
+
 #paragraph1, #paragraph2 {
-    color: bisque;
+    color: rgb(253, 202, 140);
     font-weight: bold;
     font-size: medium;
 }
@@ -8,6 +15,13 @@
     border-radius: 3px;
     background-color: bisque;
     color: rgb(143, 141, 141);
+    font-size: xx-large;
+    margin: 50px 10px;
+    box-shadow: 5px 5px 7px rgb(126, 100, 69);
+}
+
+#paragraph1, #paragraph2 {
+    font-size: 1.25em;
 }
 
 #midButton:hover {
