@@ -1,88 +1,123 @@
 //Variables:
-/* Due to me using a bootstrap "carousel", 
-I had to make a variable for each <p> and <h1> element */
-let headerElement = document.getElementById('headerElement');
-let headerElement2 = document.getElementById('headerElement2');
-let headerElement3 = document.getElementById('headerElement3');
-let headerElement4 = document.getElementById('headerElement4');
-let headerElement5 = document.getElementById('headerElement5');
-let headerElement6 = document.getElementById('headerElement6');
-let paragraphTxt1 = document.getElementById('paragraphTxt1');
-let paragraphTxt2 = document.getElementById('pargraphTxt2');
-let paragraphTxt3 = document.getElementById('pargraphTxt2');
-let paragraphTxt4 = document.getElementById('pargraphTxt2');
-let paragraphTxt5 = document.getElementById('pargraphTxt2');
-let paragraphTxt6 = document.getElementById('pargraphTxt2');
-let paragraphTxt7 = document.getElementById('pargraphTxt2');
-let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
-let currentPage = 0;
-//Objects:
-/* Starting with the "state" object which has the key: "currentPage" at value 0, 
-and also the key: "pages" with an array value */
-let state = {
-    //
-    currentPage: 0,
-    pages:  [
-        {
-            headerElement: "I can read your mind",
-            nextButton: "GO"
-        },
-        {
-            headerElement2: "Pick a number between 01-99",
-            paragraphTxt1: "When you have your number, click next",
-            nextButtonText: "NEXT"
-        },
-        {
-            headerElement3: "Add both digits together to get a new number",
-            paragraphTxt2: "Ex: 14 is 1 + 4 = 5",
-            paragraphTxt3: " click next to proceed",
-            nextButtonText: "NEXT"
-        },
-        {
-            headerElement4: "Subtract your new number from your original number",
-            paragraphTxt4: "Ex: 14 - 5 = 9",
-            parapraghTxt5: " click next to proceed",
-            nextButtonText: "NEXT"
-        },
-        {
-            headerElement5: "0-!, 1-@, 2-#, 3-$ ...",
-            paragraphTxt6: "Find your new number.", 
-            paragraphTxt7: "Note the symbol thats by the number.",
-            nextButtonText: "REVEAL"
-        },
-        {
-            headerElement6: "",
-            paragraphText: "",
-            nextButtonText: ""
-        },
-    ]
-}
-
+let headerText = document.getElementById('headerText');
+let midButton = document.getElementById('midButton');
+let paragraph1 = document.getElementById('paragraph1');
+let paragraph2 = document.getElementById('paragraph2');
+let bttmButton = document.getElementById('bttmButton');
 
 //Functions:
 /* the function "create99symbols()" is SUPPOSE to iterate through our key:value pair of "pages"
 and give us a symbol with every multiple of 9 on page 6 */
+let symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '('];
+let arr = [];
 function create99Symbols() {
-    let arr = [];
     for (let i = 0; i < 100; i++) {
-        arr.push(i + " " + symbols[i % 9]);        
+        arr.push(i + " - " + symbols[i % 9]);        
     }
+    return arr;
 }
-create99Symbols(state.pages[headerElement6]);
 
-function stateChange() {
-
+let state = {
+    currentPage: 0,
+    pages:  [
+        {
+            headerText: "I can read your mind",
+            midButton: "",
+            paragraph1: "",
+            paragraph2: "",
+            bttmButton: "GO"
+        },
+        {
+            headerText: "Pick a number between 01-99",
+            midButton: "NEXT",
+            paragraph1: "When you have your number, click next",
+            paragraph2: "",
+            bttmButton: "RESET"
+        },
+        {
+            headerText: "Add both digits together to get a new number",
+            midButton: "NEXT",
+            paragraph1: "Ex: 14 is 1 + 4 = 5",
+            paragraph2: "click next to proceed",
+            bttmButton: "RESET"
+        },
+        {
+            headerText: "Subtract your new number from your original number",
+            midButton: "NEXT",
+            paragraph1: "Ex: 14 - 5 = 9",
+            parapragh2: " click next to proceed",
+            bttmButton: "RESET"
+        },
+        {
+            headerText: create99Symbols(),
+            midButton: "REVEAL",
+            paragraph1: "Find your new number.", 
+            paragraph2: "Note the symbol thats by the number.",
+            bttmButton: "RESET"
+        },
+        {
+            headerText: "!",
+            midButton: "",
+            paragraph1: "",
+            paragraph2: "",
+            bttmButton: "RESET"
+        },
+    ]
 }
 
 function init() {
-    currentPage = 0;
-    let firstPage = state.pages[state.currentPage];
-    headerElement.innerText = firstPage.headerElement;
-    console.log(currentPage);
-    //let secondPage = state.pages[currentPage];
-    headerElement2.innerText = state.pages[currentPage].headerElement2;
+    let page = state.pages[state.currentPage];
+    headerText.innerText = page.headerText;
+    paragraph1.innerText = page.paragraph1;
+    paragraph2.innerText = page.paragraph2;
+    bttmButton.innerText = page.bttmButton;
+    midButton.innerText = page.midButton;
+
+    if (page.midButton) {
+        midButton.style.display = "block";
+    } else {
+        midButton.style.display = "none";
+    } 
+
+    if (page.paragraph1) {
+        paragraph1.style.display = "block";
+   } else {
+        paragraph1.style.display = "none";
+   }
+
+   if (page.paragraph2) {
+        paragraph2.style.display = "block";
+   } else {
+        paragraph2.style.display = "none";
+   }
+   
+   if (page.bttmButton) {
+        bttmButton.style.display = "block";
+   } else {
+        bttmButton.style.display = "none";
+   }
+   
 }
-carouselExample.addEventListener('slide.bs.carousel', event => {
-    currentPage++;
-})
-//init();
+//A Function to help the user to go to the next state page
+function next() {
+    if (state.currentPage < 5) {
+        state.currentPage++;
+    } else {
+        state.currentPage = 0;
+    }
+    init();
+    console.log(state.pages);
+}
+//A Function for one of the buttons to bring to user back to the main state page
+function reset() {
+    if (state.currentPage > 0) {
+        state.currentPage = 0;
+    } else {
+        state.currentPage++;
+    }
+    init();
+}
+
+document.getElementById('midButton').addEventListener('click', next);
+document.getElementById('bttmButton').addEventListener('click', reset)
+init();
